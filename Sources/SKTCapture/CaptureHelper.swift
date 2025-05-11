@@ -6,6 +6,7 @@
 */
 
 import Foundation
+import SKTCaptureObjc
 
 // MARK: - Capture Helper Delegates
 

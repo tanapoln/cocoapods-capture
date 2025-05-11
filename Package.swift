@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "SKTCapture",
-            targets: ["SKTCapture", "SKTCaptureFramework"])
+            targets: ["SKTCaptureObjc", "SKTCapture", "SKTCaptureFramework"])
     ],
     targets: [
         .binaryTarget(
@@ -19,8 +19,8 @@ let package = Package(
         ),
         .target(
             name: "SKTCapture",
-            dependencies: ["SKTCaptureFramework"],
-            path: ".",
+            dependencies: ["SKTCaptureFramework", "SKTCaptureObjc"],
+            // path: ".",
             sources: ["CaptureHelper.swift"],
             resources: [
                 .copy("*.wav"),
@@ -34,6 +34,10 @@ let package = Package(
                 .linkedLibrary("c++"),
                 .linkedLibrary("icucore"),
             ]
+        ),
+        .target(
+            name: "SKTCaptureObjc",
+            publicHeadersPath: "."
         ),
     ],
     cxxLanguageStandard: .cxx14
